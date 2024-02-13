@@ -1,6 +1,5 @@
-
-
 @vite('resources/css/app.css')
+@vite('resources/js/users.js')
 
 
 @extends('adminlte::page')
@@ -8,22 +7,30 @@
 @section('title', 'Cadastro de Aluno')
 
 @section('content_header')
-<h1>Cadastro de Aluno</h1>
+    <h1>Cadastro de Aluno</h1>
+    <input id="userStore" type="hidden" value="{{ route('users_store') }}">
 @stop
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @section('content')
-<form action="">
-    @include('admin.users.partials.form')
-</form>
+    <form action="{{ route('users_store') }}" method="POST">
+        @csrf
+        @include('admin.users.partials.form')
+    </form>
 @stop
 
 
 
 @section('js')
-    <script src="{{asset('js/mask.js')}}"></script>
-    <script>
-        $('.date').mask('00/00/0000');
-        $('.cep').mask('00000-000');
-        $('.phone').mask('(00) 00000-0000');
-    </script>
+    <script src="{{ asset('js/mask.js') }}"></script>
+    <script src="{{ asset('js/sweet.js') }}"></script>
+
 @stop

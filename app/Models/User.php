@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
+
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -21,6 +23,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'birthday',
+        'sex',
+        'photo',
+        'code',
+        'street',
+        'neighborhood',
+        'city',
+        'phone',
+        'plan',
+        'status',
     ];
 
     /**
@@ -42,4 +54,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+    public function newUser(Request $request)
+    {
+        $request->birthday =  date('d-m-Y', strtotime($request->birthday));
+
+        $request->validate([
+            'name' => 'required',
+            'birthday' => 'required',
+            'email' => 'required',
+            'sex' => 'required',
+            'password' => 'required',
+        ]);
+
+
+        return User::create($request->all());
+    }
 }
