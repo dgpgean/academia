@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.content{
+    @apply bg-slate-100
+}
+input{
+    @apply focus:outline-none p-3
+}
+.btn_blue{
+    @apply bg-blue-500 py-3 px-8 font-bold text-white rounded-md
+}
+.btn_red{
+    @apply bg-red-500 py-3 px-8 font-bold text-white rounded-md
+}
