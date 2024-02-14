@@ -1,3 +1,3 @@
-<button type="submit" class="btn_red">
+<a href="/admin" class="btn_red hover:text-white">
     Cancelar
-</button>
+</a>

@@ -21,7 +21,7 @@
     </div>
 @endif
 @section('content')
-    <form action="{{ route('users_store') }}" method="POST">
+    <form action="{{ route('users_store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @include('admin.users.partials.form')
     </form>

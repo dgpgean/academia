@@ -1,9 +1,7 @@
 <div class="sm:w-full sm:flex sm:items-start sm:flex-col">
-    <img class="w-24 h-24 border border-violet-500" id="photo_preview">
-    foto aqui
-</div>
-<button type="button" id="photoShow" class="mt-2">Adicionar foto</button>
-<input class="hidden" type="file" accept="image/*" id="photo" name="photo">
+    <div class="w-24 h-24 border border-violet-500" id="photo_preview"> </div>
+    <button type="button" id="photoShow" class="mt-2 text-cyan-500">Adicionar foto</button>
+    <input class="hidden" type="file" accept="image/*" id="photo" name="photo">
 </div>
 <div class="md:flex gap-9 mt-9 md:justify-start flex-wrap justify-center">
     <div class="flex flex-col w-full gap-2">
@@ -77,13 +75,4 @@
     </div>
 </div>
 
-<script>
-    const photo = document.querySelector('#photo')
-    const photo_preview = document.querySelector('#photo_preview')
-    photo.onchange = evt => {
-        const [file] = photo.files
-        if (file) {
-            photo_preview.src = URL.createObjectURL(file)
-        }
-    }
-</script>
+<script></script>

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+a{
+    text-decoration: none;
+}
 .content{
     @apply bg-slate-100
 }
@@ -15,3 +18,10 @@ input{
     @apply bg-red-500 py-3 px-8 font-bold text-white rounded-md
 }
 
+/*=====USERS ============
+========================*/
+#photo_preview {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

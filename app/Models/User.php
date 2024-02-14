@@ -59,6 +59,7 @@ class User extends Authenticatable
 
     public function newUser(Request $request)
     {
+
         $request->birthday =  date('d-m-Y', strtotime($request->birthday));
 
         $request->validate([
@@ -69,6 +70,9 @@ class User extends Authenticatable
             'password' => 'required',
         ]);
 
+        if ($request->hasFile('photo')) {
+            $path = $request->photo->store('users');
+        }
 
         return User::create($request->all());
     }
