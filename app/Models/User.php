@@ -65,15 +65,16 @@ class User extends Authenticatable
         $request->validate([
             'name' => 'required',
             'birthday' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'sex' => 'required',
             'password' => 'required',
-        ],[
+        ], [
             'name.required' => 'O nome do usuário é obrigatório',
             'birthday.required' => 'A data de nascimento é obrigatório',
             'email.required' => 'O e-mail é obrigatório',
             'sex.required' => 'O sexo do usuário é obrigatório',
             'password.required' => 'A senha do usuário é obrigatório',
+            'unique' => 'Email já cadastrado'
         ]);
 
         if ($request->hasFile('photo')) {
