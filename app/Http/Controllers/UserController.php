@@ -25,8 +25,8 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $this->user->newUser($request);
+      $user =   $this->user->newUser($request);
 
-        return redirect()->back();
+     return response()->json(['name' => $user->name]);
     }
 }

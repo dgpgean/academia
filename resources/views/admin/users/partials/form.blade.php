@@ -2,6 +2,7 @@
     <div class="w-24 h-24 border border-violet-500" id="photo_preview"> </div>
     <button type="button" id="photoShow" class="mt-2 text-cyan-500">Adicionar foto</button>
     <input class="hidden" type="file" accept="image/*" id="photo" name="photo">
+    <input  type="hidden" value="{{route('users_store')}}" id="teste" >
 </div>
 <div class="md:flex gap-9 mt-9 md:justify-start flex-wrap justify-center">
     <div class="flex flex-col w-full gap-2">
