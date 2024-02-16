@@ -69,11 +69,11 @@ class User extends Authenticatable
             'sex' => 'required',
             'password' => 'required',
         ], [
-            'name.required' => 'O nome do usuário é obrigatório',
-            'birthday.required' => 'A data de nascimento é obrigatório',
-            'email.required' => 'O e-mail é obrigatório',
-            'sex.required' => 'O sexo do usuário é obrigatório',
-            'password.required' => 'A senha do usuário é obrigatório',
+            'name.required' => 'Nome do usuário',
+            'birthday.required' => 'Data de nascimento',
+            'email.required' => 'E-mail',
+            'sex.required' => 'sexo',
+            'password.required' => 'Senha',
             'unique' => 'Email já cadastrado'
         ]);
 
