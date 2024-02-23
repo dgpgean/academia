@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Requests\StoreAndUpdateUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
@@ -55,32 +57,44 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function index(Request $request)
+    {
+        return User::where("name", 'LIKE', '%' . $request->filter . '%')
+            ->orWhere('email', 'LIKE', '%' . $request->filter . '%')
+            ->where('status', $request->status)
+            ->paginate(6);
+    }
 
-
-    public function newUser(Request $request)
+    public function newUser(StoreAndUpdateUser $request)
     {
 
         $request->birthday =  date('d-m-Y', strtotime($request->birthday));
-
-        $request->validate([
-            'name' => 'required',
-            'birthday' => 'required',
-            'email' => 'required|unique:users',
-            'sex' => 'required',
-            'password' => 'required',
-        ], [
-            'name.required' => 'Nome do usuário',
-            'birthday.required' => 'Data de nascimento',
-            'email.required' => 'E-mail',
-            'sex.required' => 'sexo',
-            'password.required' => 'Senha',
-            'unique' => 'Email já cadastrado'
-        ]);
 
         if ($request->hasFile('photo')) {
             $path = $request->photo->store('users');
         }
 
         return User::create($request->all());
+    }
+
+    public function updateUser(StoreAndUpdateUser $request)
+    {
+
+        $request->birthday =  date('d-m-Y', strtotime($request->birthday));
+
+        $user = $this->find($request->id);
+
+        if ($request->hasFile('photo')) {
+            $path = $request->photo->store('users');
+        }
+
+
+        if (!is_null($request->password)) {
+            $user->update($request->all());
+        } else {
+            $user->update($request->except(['password']));
+        }
+
+        return $user;
     }
 }

@@ -1,4 +1,4 @@
-$('form').on('submit', async (e) => {
+$('#newUser').on('submit', async (e) => {
     e.preventDefault();
     const teste = document.querySelector('#teste');
 
@@ -6,6 +6,7 @@ $('form').on('submit', async (e) => {
         const githubUrl = teste.value;
         const data = {
           name: $('input[name="name"]').val() ,
+          id: $('input[name="id"]').val(),
           birthday: $('input[name="birthday"]').val() ,
           email: $('input[name="email"]').val() ,
           sex: $('select[name=sex] option').filter(':selected').val(),
@@ -19,8 +20,9 @@ $('form').on('submit', async (e) => {
           status: $('select[name=status] option').filter(':selected').val(),
 
         }
+        const method = $('#newUser').attr('method')
         const response = await fetch(githubUrl,{
-          method: 'POST',
+          method: method,
           headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
@@ -62,13 +64,13 @@ $('form').on('submit', async (e) => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Usuário cadastrado com sucesso`,
+                title: `Usuário ${method == "PUT" ? 'Atualizado' : 'Cadastrado'} com sucesso`,
                 showConfirmButton: false,
                 timer: 1500
               });
 
               setTimeout(() => {
-                window.location.href ='/admin'
+                window.location.href ='/admin/users'
               }, 2000);
         }
       } catch (error) {
@@ -87,6 +89,7 @@ $('#photoShow').on('click', ()=>{
 
 
 const photo = document.querySelector('#photo')
+if(photo){
     const photo_preview = document.querySelector('#photo_preview')
     photo.onchange = evt => {
         const [file] = photo.files
@@ -97,3 +100,7 @@ const photo = document.querySelector('#photo')
         }
 
     }
+}
+
+
+

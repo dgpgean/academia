@@ -21,7 +21,11 @@
     </div>
 @endif
 @section('content')
-    <form action="{{ route('users_store') }}" method="POST" enctype="multipart/form-data">
+    <form id="newUser" action="{{ isset($user) ? route('users_update') : route('users_store') }}"
+        enctype="multipart/form-data" method="{{ isset($user) ? 'PUT' : 'POST' }}">
+        @if (isset($user))
+            <input type="hidden" value="{{ $user->id }}" name="id">
+        @endif
         @csrf
         @include('admin.users.partials.form')
     </form>

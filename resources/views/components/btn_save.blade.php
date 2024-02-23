@@ -1,3 +1,3 @@
 <button type="submit" class="btn_blue">
-    Cadastrar
+    {{ isset($user) ? 'Atualizar' : 'Cadastrar' }}
 </button>

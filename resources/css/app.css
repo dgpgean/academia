@@ -5,6 +5,9 @@
 a{
     text-decoration: none;
 }
+.cursor-default{
+    background-color: rgb(158, 158, 158) !important;
+}
 .content{
     @apply bg-slate-100
 }
@@ -25,3 +28,17 @@ input{
     background-size: cover;
     background-position: center;
 }
+
+
+/*========== HOME ===========*/
+
+.sessionColor1{
+    background: rgb(82,77,115);
+background: linear-gradient(183deg, rgba(82,77,115,1) 0%, rgba(60,57,77,1) 100%);
+}
+
+.sessionColor2{
+    background: rgb(3,94,111);
+    background: linear-gradient(144deg, rgba(3,94,111,1) 0%, rgba(2,59,85,1) 100%);
+}
+

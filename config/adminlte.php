@@ -329,7 +329,7 @@ return [
 
                 [
                     'text' => 'Lista',
-                    'url'  => '#',
+                    'url'  => '/admin/users',
                 ],
                 [
                     'text' => 'Treinos',
@@ -343,7 +343,7 @@ return [
         ],
         [
             'text' => 'Treinos',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/workouts/new',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
